@@ -24,7 +24,7 @@
         $scope.msg="Please enter data first";
         $scope.ColorStyles={color:'black'};
     }
-      if ($scope.amount<=3) {
+     else if ($scope.amount<=3) {
       $scope.msg="Enjoy!";
       $scope.ColorStyles={color:'green'};
     }
