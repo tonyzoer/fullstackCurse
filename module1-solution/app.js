@@ -2,10 +2,15 @@
   'use strict'
 
   angular.module("LunchCheck",[]).controller("LunchCheckController",LunchCheckController);
-  LunchCheckController.$inject=['$scope','$filter'];
-  function LunchCheckController($scope,$filter){
+  LunchCheckController.$inject=['$scope'];
+  function LunchCheckController($scope){
     $scope.FoodString;
     $scope.change=function(){
+      if ($scope.FoodString==null) {
+        $scope.msg="Please enter data first";
+        $scope.ColorStyles={color:'black'};
+      }
+      else{
       $scope.Foodlist=$scope.FoodString.split(/\s*,\s*/);
       $scope.amount=$scope.Foodlist.length;
       $scope.msg="Please enter data first";
@@ -16,10 +21,10 @@
           }
       }
       if ($scope.amount==0) {
-      $scope.msg="Please enter data first";
-      $scope.ColorStyles={color:'black'};
+        $scope.msg="Please enter data first";
+        $scope.ColorStyles={color:'black'};
     }
-    else if ($scope.amount<=3) {
+      if ($scope.amount<=3) {
       $scope.msg="Enjoy!";
       $scope.ColorStyles={color:'green'};
     }
@@ -28,7 +33,8 @@
       $scope.ColorStyles={color:'red'};
       //
     }
-    }
+  }
+}
   }
 
 })();
