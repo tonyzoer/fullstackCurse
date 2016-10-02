@@ -32,7 +32,14 @@ function ShoppingListShowController(ShoppingListService) {
   };
   showList.buyItem=function (itemIndex) {
     ShoppingListService.buyItem(itemIndex);
-  }
+  };
+  showList.checkEmpty=function(){
+    if (showList.items.length==0) {
+      return true;
+    }else {
+      return false;
+    }
+  };
 }
 ShoppingListToBuyShowController.$inject=['ShoppingListService'];
 function ShoppingListToBuyShowController(ShoppingListService){
@@ -40,7 +47,15 @@ function ShoppingListToBuyShowController(ShoppingListService){
   showList.items=ShoppingListService.getToBuyItems();
   showList.removeItem=function(itemIndex){
   ShoppingListService.cancelBuy(itemIndex);
+};
+
+showList.checkEmpty=function(){
+  if (showList.items.length==0) {
+    return true;
+  }else {
+    return false;
   }
+}
 }
 function ShoppingListService() {
   var service = this;

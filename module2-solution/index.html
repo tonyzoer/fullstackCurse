@@ -9,6 +9,7 @@
   </head>
   <body>
     <h1>Cookies-mart</h1>
+
     <div ng-controller='ShoppingListAddController as itemAdder'>
       <input type="text" ng-model="itemAdder.itemName" placeholder="item name">
       <input type="text" ng-model="itemAdder.itemQuantity" placeholder="quantity">
@@ -16,6 +17,7 @@
     </div>
 
     <div ng-controller='ShoppingListShowController as showList'>
+      <h3 ng-show="showList.checkEmpty()" style="color:red;">Everything is bought</h3>
       <ol>
         <li ng-repeat="item in showList.items">
           {{ item.quantity }} of {{ item.name }}
@@ -27,6 +29,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <h1>Cookies-cart</h1>
     <div ng-controller='ShoppingListToBuyShowController as showList'>
+      <h3 ng-show="showList.checkEmpty()" style="color:red;">Nothing is bought</h3>
       <ol>
         <li ng-repeat="item in showList.items">
           {{ item.quantity }} of {{ item.name }}
